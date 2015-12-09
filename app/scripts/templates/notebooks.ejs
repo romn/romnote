@@ -1,0 +1,16 @@
+<% for(var i = 0; i < data.length; i++) {%>
+    <li class="component__notebooks-notebook">
+        <span class="component__notebooks-currentName"><%= data[i].name %></span>
+        <input class="component__notebooks-suggestedName" value="<%= data[i].name %>" placeholder="New name">
+        <% if (i === 0) { %>
+            <span class="component__notebooks-individualControls">
+                <input type="button" value="del" class="component__notebooks-delete">
+                <input type="button" value="upd" class="component__notebooks-update">
+            </span>
+        <% } %>
+    </li>
+<% } %>
+<li>
+    <input class="component__notebooks-newName" type="text" placeholder="New notebook name">
+    <span class="component__notebooks-plusOne">Create</span>
+</li>

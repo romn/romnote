@@ -1,0 +1,31 @@
+.clearfix:before,
+.clearfix:after { content: " "; display: table; }
+.gsWidth:after,
+.clearfix:after { clear: both; }
+
+body, 
+ul { margin: 0; padding: 0; }
+
+
+.component__mainLayout-top { position: fixed; left: 0; top: 0; width: 100%; height: 2em; background: black; color: white; }
+.component__mainLayout-left { overflow-y: auto; position: fixed; left: 0; top: 2em; right: 75%; bottom: 0; background: gray; color: white; }
+.component__mainLayout-rightTop { overflow-y: auto; position: fixed; left: 25%; top: 2em; right: 0; bottom: 50%; }
+.component__mainLayout-rightBottom { overflow-y: auto; position: fixed; left: 25%; top: 50%; bottom: 0; right: 0; background: black; color: gray; }
+
+.component__notebooks { padding: 1em; line-height: 2; list-style: none; }
+.component__notebooks li { display: block; box-sizing: border-box; cursor: default; }
+.component__notebooks li:hover { color: black; }
+.component__notebooks li + li { border-top: 1px solid white; }
+.component__notebooks-notebook { position: relative; }
+.component__notebooks-suggestedName { display: none; }
+.component__notebooks-notebook--editMode .component__notebooks-currentName { display: none; }
+.component__notebooks-notebook--editMode .component__notebooks-suggestedName { display: inline-block; }
+.component__notebooks-notebook--editMode .component__notebooks-individualControls { display: none; }
+.component__notebooks-individualControls { position: absolute; right: 0; }
+.component__notebooks-individualControls input { visibility: hidden; }
+.component__notebooks-notebook:hover .component__notebooks-individualControls input { visibility: visible; }
+
+.component__notes { padding: 1em; line-height: 2; list-style: none; }
+.component__notes li { display: block; box-sizing: border-box; cursor: default; }
+.component__notes li:hover { color: gray; }
+.component__notes li + li { border-top: 1px solid gray; }

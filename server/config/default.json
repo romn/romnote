@@ -1,0 +1,16 @@
+{
+  "webServer": {
+    "scheme": "http",
+    "port": 3000
+  },
+  "database": {
+    "scheme": "mongodb",
+    "name": "romnote",
+    "host": "localhost",
+    "host2": "ds054128.mongolab.com",
+    "port": 27017,
+    "port2": 54128,
+    "user2": "siteuser",
+    "password2": "dJueYgdFts#hS"
+  }
+}

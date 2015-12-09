@@ -1,0 +1,12 @@
+{
+  "generator-backbone": {
+    "appPath": "app",
+    "appName": "Romnote",
+    "testFramework": "mocha",
+    "templateFramework": "lodash",
+    "coffee": false,
+    "sassBootstrap": false,
+    "includeRequireJS": false
+  },
+  "generator-mocha": {}
+}
