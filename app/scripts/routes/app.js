@@ -16,11 +16,11 @@ Romnote.Routers = Romnote.Routers || {};
 
         },
 
-        notebook: function (notebookId) {
+        notebook: function () {
 
         },
 
-        note: function (notebookId, noteId) {
+        note: function () {
 
         }
 

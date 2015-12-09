@@ -15,10 +15,10 @@ Romnote.Models = Romnote.Models || {};
         defaults: {
         },
 
-        validate: function(attrs, options) {
+        validate: function() {
         },
 
-        parse: function(response, options)  {
+        parse: function(response)  {
             return response;
         }
     });
