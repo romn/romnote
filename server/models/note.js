@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var schema = new mongoose.Schema({
+  notebookId: ObjectId,
   title: String,
   created: Date,
   updated: Date,

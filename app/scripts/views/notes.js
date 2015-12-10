@@ -9,7 +9,9 @@ Romnote.Views = Romnote.Views || {};
         template: JST['app/scripts/templates/notes.ejs'],
         tagName: 'ul',
         className: 'component__notes',
-        events: {},
+        events: {
+            'click .component__notes-plusOne': 'handlePlusOneClick'
+        },
 
         initialize: function () {
             this.listenTo(this.collection, 'sync', this.render);
@@ -17,6 +19,10 @@ Romnote.Views = Romnote.Views || {};
 
         render: function () {
             this.el.innerHTML = this.template({data: this.collection.toJSON()});
+        },
+
+        handlePlusOneClick: function () {
+            Romnote.Components.NoteContent.switchOnDraftMode();
         }
 
     });

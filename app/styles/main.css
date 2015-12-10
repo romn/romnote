@@ -3,13 +3,12 @@
 .gsWidth:after,
 .clearfix:after { clear: both; }
 
+body { font-family: "Open Sans"; }
 body, 
 ul { margin: 0; padding: 0; }
 
-
-.component__mainLayout-top { position: fixed; left: 0; top: 0; width: 100%; height: 2em; background: black; color: white; }
-.component__mainLayout-left { overflow-y: auto; position: fixed; left: 0; top: 2em; right: 75%; bottom: 0; background: gray; color: white; }
-.component__mainLayout-rightTop { overflow-y: auto; position: fixed; left: 25%; top: 2em; right: 0; bottom: 50%; }
+.component__mainLayout-left { position: fixed; overflow-y: auto; left: 0; top: 0; right: 75%; bottom: 0; background: gray; color: white; }
+.component__mainLayout-rightTop { position: fixed; left: 25%; top: 0; right: 0; bottom: 50%; }
 .component__mainLayout-rightBottom { overflow-y: auto; position: fixed; left: 25%; top: 50%; bottom: 0; right: 0; background: black; color: gray; }
 
 .component__notebooks { padding: 1em; line-height: 2; list-style: none; }
@@ -25,12 +24,14 @@ ul { margin: 0; padding: 0; }
 .component__notebooks-individualControls input { visibility: hidden; }
 .component__notebooks-notebook:hover .component__notebooks-individualControls input { visibility: visible; }
 
-.component__notes { padding: 1em; line-height: 2; list-style: none; }
+.component__notes .component__notes-list { position: absolute; overflow-y: auto; top: 0; left: 0; right: 0; bottom: 0; line-height: 2; list-style: none; padding: 1em; }
 .component__notes li { display: block; box-sizing: border-box; cursor: default; }
 .component__notes li + li { border-top: 1px solid gray; }
 .component__notes a { color: black; text-decoration: none; cursor: default; }
 .component__notes a:hover { color: gray; }
+.component__notes .component__notes-plusOne { position: absolute; top: 1em; right: 2em; }
 
 .component__note { position: relative; height: 100%; }
-.component__note-title { position: absolute; top: 0; left: 0; width: 100%; height: 2em; }
-.component__note-text { position: absolute; top: 2em; left: 0; width: 100%; bottom: 0; }
+.component__note-title { position: absolute; top: 0; left: 0; width: 100%; height: 2em; box-sizing: border-box; }
+.component__note-text { position: absolute; top: 2em; left: 0; width: 100%; bottom: 0; box-sizing: border-box; }
+.component__note-save { position: absolute; bottom: 1em; right: 2em; }

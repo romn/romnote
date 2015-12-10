@@ -7,13 +7,17 @@ Romnote.Routers = Romnote.Routers || {};
 
     Romnote.Routers.App = Backbone.Router.extend({
         routes: {
-            '': 'index',
-            'notebooks/:notebookId': 'index',
-            'notebooks/:notebookId/notes/:noteId': 'index'
+            '': 'handleEverything',
+            'notebooks/:notebookId': 'handleEverything',
+            'notebooks/:notebookId/notes/:noteId': 'handleEverything'
         },
 
-        index: function (notebookId, noteId) {
-            _.extend(Romnote.State, { notebookId: notebookId, noteId: noteId });            
+        handleEverything: function (notebookId, noteId) {
+            _.extend(Romnote.State, { 
+                notebookId: notebookId, 
+                noteId: noteId, 
+                isInDraftMode: false 
+            });            
             this._resetComponents();
         },
 

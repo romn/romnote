@@ -18,12 +18,22 @@ Romnote.Views = Romnote.Views || {};
         },
 
         render: function () {
-            console.log(this.model);
             this.el.innerHTML = this.template(this.model.toJSON());
         },
 
         handleSaveClick: function () {
+            this.model.set({
+                title: this.el.querySelector('.component__note-title').value,
+                content: {
+                    text: this.el.querySelector('.component__note-text').value
+                }    
+            });
             
+            this.model.save({}, {success: function (data) {
+                var state = Romnote.State;
+                console.log(data);
+                state.router.navigate('notebooks/' + state.notebookId + '/notes/' + data.attributes._id, {trigger: true});
+            }});
         }
 
     });

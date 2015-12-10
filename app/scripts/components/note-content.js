@@ -1,4 +1,4 @@
-/* global Romnote, Q */
+/* global Romnote */
 
 (function () {
     'use strict';
@@ -6,22 +6,38 @@
     var model = null;
 
     function reset() {
-        var deferred = Q.defer();
-
         if (!model) {
             model = new Romnote.Models.NoteContent();
             view = new Romnote.Views.NoteContent({model: model});
             document.querySelector('[data-note-container-id="01"]').appendChild(view.el);
         }
-        model.fetch({reset: true, success: function () {
-            deferred.resolve();
-        }});
-        
-        return deferred.promise;
+        switchOffDraftMode();
+    }
+
+    function switchOnDraftMode () {
+        console.log('switching draft mode');
+        if (!Romnote.State.isInDraftMode) {
+            Romnote.State.isInDraftMode = true;
+            model.clear({silent: true});
+            model.set(_.extend({ notebookId: Romnote.State.notebookId}, model.defaults()));
+            return true;        
+        } 
+        return false;
+    }
+
+    function switchOffDraftMode () {
+        if (Romnote.State.isInDraftMode) {
+            Romnote.State.isInDraftMode = false;
+            model.fetch({reset: true});
+        } else {
+            model.fetch({reset: true});
+        }
     }
 
     Romnote.Components.NoteContent = {
-        reset: reset
+        reset: reset,
+        switchOffDraftMode: switchOffDraftMode,
+        switchOnDraftMode: switchOnDraftMode
     };
 
 })();

@@ -6,16 +6,23 @@ Romnote.Models = Romnote.Models || {};
     'use strict';
 
     Romnote.Models.NoteContent = Backbone.Model.extend({
-        url: function () {
-            return '/api/notebooks/' + Romnote.State.notebookId + '/notes/' + Romnote.State.noteId;
+        urlRoot: function () {
+            return '/api/notebooks/' + Romnote.State.notebookId + '/notes/';
         },
+
+        url: function () {
+            return Romnote.State.isInDraftMode ? this.urlRoot() : this.urlRoot() + Romnote.State.noteId;
+        },
+
+        idAttribute: '_id',
 
         initialize: function() {
         },
 
         defaults: function () {
             return {
-                content: { text: '' }
+                title: 'Default title',
+                content: { text: 'Default text' }
             };
         },
 

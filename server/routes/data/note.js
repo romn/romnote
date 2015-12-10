@@ -17,6 +17,7 @@ function readNotes(req, res, next) {
 }
 
 function createNote(req, res, next) {
+  console.log('creating');
   req.body.notebookId = req.params.id1;
   NoteModel.create(req.body, function (err, savedNote) {
     if (!err) {
@@ -34,11 +35,21 @@ function readNote(req, res, next) {
 }
 
 function updateNote(req, res, next) {
-  next();
+    console.log(5);
+    NoteModel.update({_id: req.params.id2}, req.body, function (err, updatedNote) {
+        console.log(5);
+        if(!err) {
+            res.send(updatedNote);
+        }
+    });
 }
 
 function deleteNote(req, res, next) {
-  next();
+    NoteModel.remove({_id: req.params.id2}, function (err) {
+        if (!err) {
+            res.sendStatus(204);
+        }
+    });
 }
 
 module.exports = router;
