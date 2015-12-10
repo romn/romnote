@@ -4,7 +4,7 @@ var NoteModel = require('../../models/note');
 
 var router = express.Router();
 
-router.get('/api/notebooks/:id1/notes/:id2', readNotes);
+router.get('/api/notebooks/:id1/notes', readNotes);
 router.post('/api/notebooks/:id1/notes', createNote);
 router.get('/api/notebooks/:id1/notes/:id2', readNote);
 router.put('/api/notebooks/:id1/notes/:id2', updateNote);
@@ -26,7 +26,11 @@ function createNote(req, res, next) {
 }
 
 function readNote(req, res, next) {
-  next();
+    NoteModel
+      .findById(req.params.id2, function(err, doc) {
+        res.send(err ? {} : doc);
+      });
+      
 }
 
 function updateNote(req, res, next) {

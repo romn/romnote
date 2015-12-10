@@ -6,13 +6,17 @@ Romnote.Models = Romnote.Models || {};
     'use strict';
 
     Romnote.Models.NoteContent = Backbone.Model.extend({
-
-        url: '',
+        url: function () {
+            return '/api/notebooks/' + Romnote.State.notebookId + '/notes/' + Romnote.State.noteId;
+        },
 
         initialize: function() {
         },
 
-        defaults: {
+        defaults: function () {
+            return {
+                content: { text: '' }
+            };
         },
 
         validate: function() {

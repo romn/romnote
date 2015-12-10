@@ -15,7 +15,8 @@ Romnote.Views = Romnote.Views || {};
             'mouseenter .component__notebooks-notebook': 'handleNotebookMouseenter',
             'click .component__notebooks-delete': 'handleDeleteClick',
             'click .component__notebooks-update': 'handleUpdateClick',
-            'keydown .component__notebooks-suggestedName': 'handleSuggestedNameKeydown'
+            'keydown .component__notebooks-suggestedName': 'handleSuggestedNameKeydown',
+            'click .component__notebooks-notebook': 'handleNotebookSelection'
         },
 
         initialize: function () {
@@ -28,6 +29,7 @@ Romnote.Views = Romnote.Views || {};
         },
 
         handleCreateClick: function () {
+            event.stopPropagation();
             this.collection.create({name: this.el.querySelector('.component__notebooks-newName').value});
         },
 
@@ -39,12 +41,15 @@ Romnote.Views = Romnote.Views || {};
             var self = this;
             var model = this._getTargetModel(event);
 
+            event.stopPropagation();
+
             model.destroy({wait: true}).done(function () {
                 self.render();
             });
         },
 
         handleUpdateClick: function (event) {
+            event.stopPropagation();
             this._toggleEditMode(event);
         },
 
@@ -57,6 +62,11 @@ Romnote.Views = Romnote.Views || {};
                     this._toggleEditMode(event);
                     break;
             }
+        },
+
+        handleNotebookSelection: function (event) {
+            var model = this._getTargetModel(event);
+            Romnote.State.router.navigate('/notebooks/' + model.get('_id'), { trigger: true });
         },
 
         _toggleEditMode: function (event) {

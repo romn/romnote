@@ -6,8 +6,9 @@ Romnote.Models = Romnote.Models || {};
     'use strict';
 
     Romnote.Models.Note = Backbone.Model.extend({
-
-        url: '',
+        url: function () {
+            return '/api/notebooks/' + Romnote.State.notebookId + '/notes/';
+        },
 
         initialize: function() {
         },

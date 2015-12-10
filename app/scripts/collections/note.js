@@ -6,9 +6,10 @@ Romnote.Collections = Romnote.Collections || {};
     'use strict';
 
     Romnote.Collections.Note = Backbone.Collection.extend({
-        url: '/api/notes',
+        url: function () {
+            return '/api/notebooks/' + Romnote.State.notebookId + '/notes';
+        },
         model: Romnote.Models.Note
 
     });
-
 })();

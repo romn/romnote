@@ -12,8 +12,9 @@ var schema = new mongoose.Schema({
 var Model;
 
 schema.statics.getNotesOf = function(notebookId, callback) {
+  var oid = mongoose.Types.ObjectId;
   Model
-    .find({notebookId: notebookId},'title created updated')
+    .find({notebookId: oid(notebookId)},'notebookId title created updated')
     .exec(function(err, docs) {
       callback(err ? [] : docs);
     });
