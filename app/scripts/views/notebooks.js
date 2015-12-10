@@ -15,8 +15,8 @@ Romnote.Views = Romnote.Views || {};
             'mouseenter .component__notebooks-notebook': 'handleNotebookMouseenter',
             'click .component__notebooks-delete': 'handleDeleteClick',
             'click .component__notebooks-update': 'handleUpdateClick',
-            'keydown .component__notebooks-suggestedName': 'handleSuggestedNameKeydown'
-            //'click .component__notebooks-notebook': 'handleNotebookSelection'
+            'keydown .component__notebooks-suggestedName': 'handleSuggestedNameKeydown',
+            'click .component__notebooks-notebook': 'handleNotebookSelection'
         },
 
         initialize: function () {
